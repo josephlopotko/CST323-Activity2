@@ -1,0 +1,1 @@
+# This document maps backend routes to frontend templates.Example:GET /login        → login.htmlGET /register     → register.htmlGET /admin/users  → userAdmin.htmlThis document becomes the contract between Student 1 and Student 2.If a page does not appear in file-map.md, it should not be implemented.

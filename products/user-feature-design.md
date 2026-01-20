@@ -1,0 +1,3 @@
+# This document explains what the Users feature does from a UI perspective.It must include:•Feature summary:oRegistrationoLogin / logoutoAdmin user management•User roles:oRegular useroAdmin•High-level user flows:oRegister → login → use appoAdmin → view users → edit → deleteThis document answers the question:
+# 20“What problem does this feature solve for the user?”
+# Student 2 decides:•Where messages appear•How noticeable they are•How the user recoversThis planning must be documented in user-feature-design.md
