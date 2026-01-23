@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Confirm Delete User</title>
 </head>
 <body>
-    <!-- Navigation Bar (Admin view) -->
+    <!-- Navigation Bar -->
     <nav>
         <a href="/">Home</a>
-        <a href="/admin/users">User Admin</a>
-        <a href="/logout">Logout</a>
+        
+        <!-- Show only when NOT logged in -->
+        <span sec:authorize="!isAuthenticated()">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </span>
+        
+        <!-- Show only when logged in -->
+        <span sec:authorize="isAuthenticated()">
+            <a sec:authorize="hasRole('ADMIN')" href="/admin/users">User Admin</a>
+            <a href="/logout">Logout</a>
+        </span>
     </nav>
 
     <h1>Confirm Delete User</h1>

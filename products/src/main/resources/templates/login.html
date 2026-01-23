@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html xmls:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
     </head>
     <body>
-        <!-- Navigaation Bar -->
-         <nav>
-            <a href="/">Home</a>
-            <a href="/">Login</a>
-            <a href="/">Register</a>
-         </nav>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="/">Home</a>
+        
+        <!-- Show only when NOT logged in -->
+        <span sec:authorize="!isAuthenticated()">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </span>
+        
+        <!-- Show only when logged in -->
+        <span sec:authorize="isAuthenticated()">
+            <a sec:authorize="hasRole('ADMIN')" href="/admin/users">User Admin</a>
+            <a href="/logout">Logout</a>
+        </span>
+    </nav>
 
          <h1>User Login</h1>
 
