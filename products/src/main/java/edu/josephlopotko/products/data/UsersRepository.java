@@ -1,5 +1,8 @@
 package edu.josephlopotko.products.data;
 
-public interface UsersRepository {
+import org.springframework.data.repository.CrudRepository;
+import edu.josephlopotko.products.models.UserEntity;
+
+public interface UsersRepository extends CrudRepository<UserEntity, Integer>{
 
 }
