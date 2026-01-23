@@ -1,9 +1,10 @@
 package edu.josephlopotko.products.models;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,19 +12,20 @@ import jakarta.persistence.Table;
 public class UserEntity {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    @Column
+    @Column(name = "username")
     private String username;
 
-    @Column
+    @Column(name = "password")
     private String password;
     
-    @Column
+    @Column(name = "role")
     private String role;
 
-    @Column
+    @Column(name = "enabled")
     private boolean enabled;
 
     public UserEntity() {
