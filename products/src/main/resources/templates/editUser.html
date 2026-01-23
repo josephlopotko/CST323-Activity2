@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+</head>
+<body>
+    <!-- Navigation Bar (Admin view) -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/admin/users">User Admin</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+    <h1>Edit User</h1>
+
+    <!-- Error Message -->
+    <div th:if="${errorMessage}" style="color: red; background-color: #ffcccc; padding: 10px; margin: 10px 0;">
+        ⚠️ <span th:text="${errorMessage}"></span>
+    </div>
+
+    <!-- Edit User Form -->
+    <form th:action="@{/admin/users/edit}" method="post" th:object="${user}">
+        <!-- Hidden field for user ID -->
+        <input type="hidden" th:field="*{id}" />
+        
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" readonly style="background-color: #f0f0f0;" />
+        </div>
+        
+        <div>
+            <label for="role">Role:</label>
+            <select id="role" th:field="*{role}">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="enabled">Account Status:</label>
+            <input type="checkbox" id="enabled" th:field="*{enabled}" />
+            <label for="enabled">Enabled</label>
+        </div>
+        
+        <div>
+            <button type="submit">Save Changes</button>
+            <a href="/admin/users">Cancel</a>
+        </div>
+    </form>
+</body>
+</html>
