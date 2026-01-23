@@ -1,5 +1,5 @@
 package edu.josephlopotko.products.data;
 
-public class UsersRepository {
+public interface UsersRepository {
 
 }
