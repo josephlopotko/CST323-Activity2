@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http:///www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Management</title>
+    </head>
+    <body>
+            <!-- Navigation Bar -->
+    <nav>
+        <a href="/">Home</a>
+        
+        <!-- Show only when NOT logged in -->
+        <span sec:authorize="!isAuthenticated()">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </span>
+        
+        <!-- Show only when logged in -->
+        <span sec:authorize="isAuthenticated()">
+            <a sec:authorize="hasRole('ADMIN')" href="/admin/users">User Admin</a>
+            <a href="/logout">Logout</a>
+        </span>
+    </nav>
+
+        <h1>User Management</h1>
+
+        <!-- Success Message-->
+         <div th:if="${message}" style="color: green; background-color: #ccffcc; padding: 10px; margin: 10px 0;">
+            <span th:text="${message}"></span>
+         </div>
+
+         <!-- Users Table -->
+          <table border="1" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Enabled</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.username}">john</td>
+                    <td th:text="${user.role}">USER</td>
+                    <td th:text="${user.enabled ? 'Yes' : 'No'}">Yes</td>
+                    <td>
+                        <a th:href="@{/admin/users/edit/{id}(id=${user.id})}">Edit</a>
+                        <a th:href="@{/admin/users/delete/{id}(id=${user.id})}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+
+          <br/>
+          <a href="/">Back to Home</a>
+    </body>
+</html>
