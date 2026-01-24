@@ -21,15 +21,20 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/orders";
+    }
+
     @GetMapping("/login")
     public String login() {
-        return "auth/login";
+        return "login";
     }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new UserEntity());
-        return "auth/register";
+        return "register";
     }
 
     @PostMapping("/register")
