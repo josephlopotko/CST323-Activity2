@@ -19,7 +19,9 @@
         <!-- Show only when logged in -->
         <span sec:authorize="isAuthenticated()">
             <a sec:authorize="hasRole('ADMIN')" href="/admin/users">User Admin</a>
-            <a href="/logout">Logout</a>
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit">Logout</button>
+            </form>
         </span>
     </nav>
 
