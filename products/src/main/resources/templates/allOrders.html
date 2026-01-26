@@ -11,7 +11,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
- 
+     <!-- Navigation Bar -->
+    <nav>
+        <a href="/">Home</a>
+        
+        <!-- Show only when NOT logged in -->
+        <span sec:authorize="!isAuthenticated()">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </span>
+        
+        <!-- Show only when logged in -->
+        <span sec:authorize="isAuthenticated()">
+            <a sec:authorize="hasRole('ADMIN')" href="/admin/users">User Admin</a>
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit">Logout</button>
+            </form>
+        </span>
+    </nav>
 <div class="container">
 
 <h1 th:text="${title}"></h1>
