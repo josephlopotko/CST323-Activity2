@@ -28,7 +28,7 @@ public class UserAdminController {
     public String getAllUsers(Model model) {
         List<UserEntity> users = (List<UserEntity>) usersRepository.findAll();
         model.addAttribute("users", users);
-        return "user/userAdmin";
+        return "userAdmin";
     }
 
     @GetMapping("/users/edit/{id}")
@@ -36,7 +36,7 @@ public class UserAdminController {
         UserEntity user = usersRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("Invalid user Id: " + id));
         model.addAttribute("user", user);
-        return "user/editUser";
+        return "editUser";
     }
 
     @PostMapping("/users/edit")
@@ -60,7 +60,7 @@ public class UserAdminController {
         UserEntity user = usersRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("Invalid user Id: " + id));
         model.addAttribute("user", user);
-        return "user/confirmDeleteUser";
+        return "confirmDeleteUser";
     }
 
     @PostMapping("/users/delete")
